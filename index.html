@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 음악·음성 도구 실습 가이드 | 주택관리사 AI 교육</title>
+<meta name="description" content="SUNO AI, 일레븐랩스, 클로바노트 실습 프롬프트 모음 — 복사해서 바로 실행!">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--nv:#1B2A4A;--or:#FF6B35;--mt:#2ECCA8;--bl:#4A90D9;--rd:#E84D4D;--bg:#F7F8FA;--cd:#FFF;--tx:#2D2D2D;--gy:#6B7B8D;--pb:#FDF2E9;--tb:#E8F8F0;--wb:#FDE8E8;--bb:#EBF5FB}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7}
+.wrap{max-width:800px;margin:0 auto;padding:20px}
+h1{font-size:1.8rem;font-weight:900;color:var(--nv);margin:24px 0 8px;letter-spacing:-0.02em}
+h2{font-size:1.4rem;font-weight:700;color:var(--nv);margin:32px 0 12px;padding-bottom:8px;border-bottom:3px solid var(--or)}
+h3{font-size:1.15rem;font-weight:700;color:var(--nv);margin:24px 0 8px}
+h4{font-size:1rem;font-weight:700;margin:16px 0 6px}
+p{margin:6px 0;font-size:.95rem}
+a{color:var(--bl);text-decoration:none;font-weight:500}
+a:hover{text-decoration:underline}
+.hero{background:var(--nv);color:#fff;padding:32px 24px;border-radius:16px;margin-bottom:24px;text-align:center}
+.hero h1{color:#fff;font-size:2rem;margin:0}
+.hero .sub{color:var(--mt);font-size:1.1rem;margin-top:8px}
+.hero .meta{color:#9BA5B5;font-size:.85rem;margin-top:6px}
+.card{background:var(--cd);border-radius:14px;padding:20px;margin:12px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.card--prompt{background:var(--pb);border-left:4px solid var(--or)}
+.card--tip{background:var(--tb);border-left:4px solid var(--mt)}
+.card--warn{background:var(--wb);border-left:4px solid var(--rd)}
+.card--blue{background:var(--bb);border-left:4px solid var(--bl)}
+.card h4{margin-top:0}
+.prompt{background:#1a1a2e;color:#e0e0e0;border-radius:10px;padding:16px;font-size:.9rem;line-height:1.8;white-space:pre-wrap;font-family:'Noto Sans KR',monospace;margin:8px 0;position:relative;overflow-x:auto}
+.copy-btn{position:absolute;top:8px;right:8px;background:var(--or);color:#fff;border:none;padding:5px 12px;border-radius:6px;font-size:.75rem;cursor:pointer;font-weight:600}
+.copy-btn:hover{background:#e55a25}
+.copy-btn.copied{background:var(--mt)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem}
+th{background:var(--nv);color:#fff;padding:10px 12px;text-align:left}
+td{padding:10px 12px;border-bottom:1px solid #eee}
+tr:nth-child(even){background:#fafafa}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.75rem;font-weight:600;margin:2px}
+.badge--or{background:#FFF3E0;color:var(--or)}.badge--bl{background:#E3F2FD;color:var(--bl)}.badge--mt{background:#E0F7EF;color:#1B9C7A}.badge--rd{background:#FFEBEE;color:var(--rd)}
+.step-flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.step-item{background:var(--cd);border-radius:10px;padding:12px 16px;text-align:center;flex:1;min-width:100px;border-top:3px solid var(--bl)}
+.step-arrow{font-size:1.5rem;color:var(--or);font-weight:700}
+.cta-box{background:var(--nv);color:#fff;border-radius:14px;padding:24px;text-align:center;margin:20px 0}
+.cta-box a{color:var(--mt);font-size:1.1rem;font-weight:700}
+.footer{text-align:center;padding:24px;color:var(--gy);font-size:.8rem;margin-top:32px}
+@media(max-width:600px){.wrap{padding:12px}.hero h1{font-size:1.5rem}.step-flow{flex-direction:column}.step-arrow{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<div class="hero">
+<h1>🎵 AI 음악·음성 도구 실무 활용</h1>
+<p class="sub">SUNO · 일레븐랩스 · 클로바노트 실습 가이드</p>
+<p class="meta">주택관리사 AI 교육 3회차 | 강사 이만성 (이브레인) | 📱 모바일 실습</p>
+</div>
+
+<!-- 단톡방 -->
+<div class="cta-box">
+<p style="font-size:1.2rem;font-weight:700;margin-bottom:8px">📱 먼저! 단톡방에 입장하세요</p>
+<p style="margin-bottom:12px">프롬프트를 단톡방에 올려드립니다 → 복사해서 바로 실습!</p>
+<a href="https://open.kakao.com/o/gB2DbrSh" target="_blank">👉 카카오톡 단톡방 입장하기</a>
+</div>
+
+<!-- 앱 설치 -->
+<h2>📲 앱 설치 (실습 전 준비)</h2>
+
+<table>
+<tr><th>도구</th><th>다운로드</th><th>로그인</th></tr>
+<tr><td>🎵 <strong>SUNO AI</strong></td><td><a href="https://apps.apple.com/app/suno-make-music-with-ai/id6480136315" target="_blank">iOS</a> · <a href="https://play.google.com/store/apps/details?id=com.suno.app" target="_blank">Android</a></td><td>구글 계정</td></tr>
+<tr><td>🎙️ <strong>일레븐랩스</strong></td><td><a href="https://apps.apple.com/app/elevenlabs-reader-text-to-speech/id6479373050" target="_blank">iOS</a> · <a href="https://play.google.com/store/apps/details?id=io.elevenlabs.ttsreader" target="_blank">Android</a></td><td>구글 계정</td></tr>
+<tr><td>📝 <strong>클로바노트</strong></td><td><a href="https://apps.apple.com/app/clova-note/id1597633368" target="_blank">iOS</a> · <a href="https://play.google.com/store/apps/details?id=com.naver.clova.minute" target="_blank">Android</a></td><td><strong style="color:var(--rd)">네이버</strong> 계정</td></tr>
+<tr><td>🔍 <strong>Gemini</strong></td><td><a href="https://gemini.google.com" target="_blank">웹 접속</a></td><td>구글 계정</td></tr>
+<tr><td>💬 <strong>ChatGPT</strong></td><td><a href="https://apps.apple.com/app/chatgpt/id6448311069" target="_blank">iOS</a> · <a href="https://play.google.com/store/apps/details?id=com.openai.chatgpt" target="_blank">Android</a></td><td>구글 계정</td></tr>
+</table>
+
+<div class="card card--warn"><p>⚠️ <strong>구글 계정</strong>이 없으면 미리 만들어주세요! 클로바노트는 <strong>네이버 계정</strong>이 필요합니다.</p></div>
+
+<!-- ====== SUNO ====== -->
+<h2>🎵 파트 1: SUNO AI — 음악 만들기</h2>
+
+<div class="card card--tip"><p>🔑 <strong>GMIV 프롬프트 법칙</strong>: [장르] + [분위기] + [악기] + [보컬] = 완벽한 프롬프트!</p></div>
+
+<h3>실습 1: 아파트 봄 축제 배경음악</h3>
+<p>SUNO 앱 → Create → 아래 프롬프트 붙여넣기 → Create!</p>
+<div class="prompt" id="p1">장르: 밝은 팝, 축제 분위기 음악
+분위기: 신나고 경쾌한, 봄 날씨처럼 화사하고 따뜻한
+악기: 피아노 멜로디, 어쿠스틱 기타 반주, 탬버린, 가벼운 드럼 비트
+보컬: 없음, 가사 없는 연주곡으로만 구성
+아파트 주민 체육대회와 봄 축제 행사장에서 스피커로 틀어놓을 배경음악.
+아이부터 어르신까지 모두 기분 좋아지는 밝고 따뜻한 멜로디.
+시작은 피아노로 잔잔하게 열리다가 점점 신나지는 구성. 2분 이내.<button class="copy-btn" onclick="cp(this,'p1')">복사</button></div>
+
+<h3>실습 2: 로비·엘리베이터 배경음악</h3>
+<div class="prompt" id="p2">장르: 재즈, 보사노바, 라운지 음악
+분위기: 차분하고 고급스러운, 고급 호텔 로비 느낌, 비 오는 오후 카페처럼 편안한
+악기: 어쿠스틱 피아노가 중심, 색소폰이 은은하게 반주, 우드베이스가 깔리고 브러시 드럼이 살짝
+보컬: 없음, 순수 연주곡으로 하루 종일 반복 재생해도 부담 없게
+아파트 로비나 엘리베이터에서 24시간 틀어놓을 배경음악.
+갑자기 크거나 자극적인 소리 없이 일정한 볼륨과 분위기 유지. 3분 이내.<button class="copy-btn" onclick="cp(this,'p2')">복사</button></div>
+<div class="card card--tip"><p>💡 분위기만 "축제 → 재즈"로 바꿨을 뿐인데 완전히 다른 곡이 됩니다!</p></div>
+
+<h3>실습 3: 좋아하는 곡 풍으로 음악 만들기</h3>
+<div class="step-flow">
+<div class="step-item"><strong>1단계</strong><br>유튜브 검색<br>URL 복사</div>
+<div class="step-arrow">→</div>
+<div class="step-item" style="border-color:var(--or)"><strong>2단계</strong><br>Gemini 분석<br>프롬프트 입력</div>
+<div class="step-arrow">→</div>
+<div class="step-item" style="border-color:var(--mt)"><strong>3단계</strong><br>SUNO 입력<br>결과 붙여넣기!</div>
+</div>
+<p><strong>Gemini</strong> (<a href="https://gemini.google.com" target="_blank">gemini.google.com</a>)에 붙여넣기:</p>
+<div class="prompt" id="p3">이 유튜브 영상에 나오는 곡의 음악 스타일을 자세히 분석해줘.
+
+분석해야 할 항목:
+1. 장르가 뭔지 한국어로 알려줘 (예: 한국 트로트, 감성 발라드)
+2. 전체 분위기가 어떤지 한국어로 표현해줘 (예: 따뜻하고 애절한)
+3. 어떤 악기가 사용되었는지 한국어로 나열해줘 (예: 피아노, 바이올린)
+4. 보컬 특징을 한국어로 설명해줘 (예: 여성 보컬, 감성적이고 허스키한)
+5. 곡의 빠르기를 알려줘 (예: 느린 템포, 빠른 템포)
+6. 이 곡의 전체 느낌을 한 문장으로 요약해줘
+
+마지막에 위 분석 결과를 SUNO AI에 바로 넣을 수 있게 한 줄로 정리해줘.
+
+유튜브 링크: (여기에 주소 붙여넣기)<button class="copy-btn" onclick="cp(this,'p3')">복사</button></div>
+<div class="card card--warn"><p>⚠️ <strong>유튜브 영상 분석은 Gemini만 가능!</strong> ChatGPT, Claude는 유튜브를 볼 수 없어요.</p></div>
+
+<h3>실습 4: 가사 있는 노래 만들기 (Custom Mode)</h3>
+<p>ChatGPT 또는 Gemini에 가사 작성 요청:</p>
+<div class="prompt" id="p4">한국 트로트 장르로 제목이 "우리 아파트 이웃사촌"인 노래 가사를 써줘.
+
+가사 구조: 1절 → 후렴 → 2절 → 후렴 → 브릿지 → 마지막 후렴
+
+가사에 담길 내용:
+- 아파트에서 매일 마주치는 이웃과 정 나누며 사는 이야기
+- 엘리베이터에서 인사하고, 택배 대신 받아주고, 김장철에 김치 나눠 먹는 따뜻한 일상
+- 명절에 혼자인 어르신한테 떡국 갖다드리는 장면
+- 트로트 특유의 감성적이고 정겨운 한국식 표현으로 써줘
+- 후렴구는 노래방에서 쉽게 따라 부를 수 있게 단순하게
+
+결과물:
+1. 한글 가사 전체를 먼저 써줘
+2. 영어 가사 전체를 그 다음에 써줘 (SUNO에 넣을 때 사용)<button class="copy-btn" onclick="cp(this,'p4')">복사</button></div>
+
+<div class="card card--blue">
+<h4>📌 SUNO Custom Mode 입력</h4>
+<p>💡 <strong>Custom Mode를 켜야</strong> Lyrics 입력창이 나타납니다!</p>
+<table>
+<tr><td><strong>Lyrics</strong></td><td>AI가 써준 <strong>영어</strong> 가사 붙여넣기</td></tr>
+<tr><td><strong>Style</strong></td><td>한국 트로트, 따뜻하고 정겨운, 피아노, 기타, 색소폰, 남성 보컬, 감성적, 중간 템포</td></tr>
+<tr><td><strong>Title</strong></td><td>우리 아파트 이웃사촌</td></tr>
+</table>
+</div>
+
+<h3>실습 5: 내 취향 음악 골라 만들기</h3>
+<p>아래 4개 중 <strong>1개</strong>를 골라 SUNO에 붙여넣으세요!</p>
+
+<details><summary><strong>🎤 감성 트로트 발라드</strong></summary>
+<div class="prompt" id="p5a">장르: 한국 트로트, 감성 발라드, 성인 가요 스타일
+분위기: 따뜻하고 애절한, 가슴이 뭉클해지는, 옛날 연인을 떠올리게 하는 감성
+악기: 피아노가 중심, 어쿠스틱 기타 반주, 바이올린이 구슬프게 울리고, 색소폰 간주
+보컬: 여성 보컬, 감성적이고 부드러우면서 약간 허스키한 목소리
+조항조 '만약에' 느낌의 중년층이 좋아하는 감성 트로트.
+느린 템포로 가슴에 스며드는 곡. 3분 이내.<button class="copy-btn" onclick="cp(this,'p5a')">복사</button></div>
+</details>
+
+<details><summary><strong>🕺 신나는 K-POP</strong></summary>
+<div class="prompt" id="p5b">장르: 케이팝, 댄스 팝, 일렉트로 팝, 최신 걸그룹 스타일
+분위기: 신나고 에너지 넘치는, 중독성 강한 후렴, 파티 분위기
+악기: 강한 신디사이저 베이스, 일렉기타 리프, 808 드럼 비트, 전자 피아노
+보컬: 여성 보컬, 밝고 파워풀한 목소리, 랩 파트 포함
+에스파, 아이브 느낌의 최신 K-POP. 빠른 템포. 3분 이내.<button class="copy-btn" onclick="cp(this,'p5b')">복사</button></div>
+</details>
+
+<details><summary><strong>☕ 카페 재즈</strong></summary>
+<div class="prompt" id="p5c">장르: 스무스 재즈, 보사노바, 라운지 재즈 스타일
+분위기: 차분하고 편안한, 비 오는 오후 카페에 앉아 있는 느낌
+악기: 어쿠스틱 피아노 주도, 색소폰 부드럽게, 우드베이스, 브러시 드럼
+보컬: 없음, 순수 연주곡
+하루 종일 반복해도 질리지 않는 잔잔한 카페 재즈. 4분 이내.<button class="copy-btn" onclick="cp(this,'p5c')">복사</button></div>
+</details>
+
+<details><summary><strong>🧘 힐링 명상 음악</strong></summary>
+<div class="prompt" id="p5d">장르: 뉴에이지, 앰비언트, 명상 음악, 수면 유도 음악 스타일
+분위기: 평화롭고 몽환적인, 깊은 숲속 호수가에 있는 느낌
+악기: 부드러운 피아노, 하프, 새소리와 물소리 자연 효과음, 패드 신디사이저
+보컬: 없음 또는 아주 가벼운 허밍만
+잠들기 전 힐링 음악. 갑작스러운 변화 없이 물 흐르듯 자연스럽게. 5분 이내.<button class="copy-btn" onclick="cp(this,'p5d')">복사</button></div>
+</details>
+
+<!-- ====== 일레븐랩스 ====== -->
+<h2>🎙️ 파트 2: 일레븐랩스 — AI 성우</h2>
+
+<div class="card">
+<h4>🎛️ 톤 조절법</h4>
+<table>
+<tr><th>상황</th><th>Stability</th><th>문장부호</th><th>느낌</th></tr>
+<tr><td>📢 일반 안내</td><td><strong>70%</strong></td><td>마침표(.)</td><td>아나운서처럼 또렷</td></tr>
+<tr><td>🚨 긴급 안내</td><td><strong>50%</strong></td><td>느낌표(!)</td><td>긴장감, 빠른 전달</td></tr>
+<tr><td>🎊 명절 인사</td><td><strong>30%</strong></td><td>물결(~)</td><td>감성적, 따뜻</td></tr>
+</table>
+<p>💡 Stability가 낮을수록 감정이 풍부해집니다!</p>
+</div>
+
+<h3>실습 6: 주민 행사 안내방송</h3>
+<p>일레븐랩스 앱 → Text to Speech → Korean → 목소리 선택 → 붙여넣기 → Generate!</p>
+<div class="prompt" id="p6">안녕하세요. 입주민 여러분.
+○○아파트 관리사무소에서 안내 말씀 드립니다.
+
+오는 3월 22일 토요일, 오전 10시부터 오후 4시까지
+단지 내 중앙 광장에서 "봄맞이 주민 한마당 행사"가 열립니다.
+
+먹거리 장터, 어린이 놀이마당, 주민 노래자랑, 경품 추첨 등
+다양한 프로그램이 준비되어 있습니다.
+
+가족과 함께 많은 참여 부탁드립니다.
+감사합니다.<button class="copy-btn" onclick="cp(this,'p6')">복사</button></div>
+
+<h3>실습 7: 긴급 안내방송 <span class="badge badge--rd">Stability 50%</span></h3>
+<div class="prompt" id="p7">긴급 안내 말씀 드립니다!
+현재 태풍 경보가 발령되었습니다!
+
+모든 입주민 여러분께서는 외출을 삼가시고,
+베란다 창문과 현관문을 반드시 닫아 주시기 바랍니다!
+
+화분, 빨래 건조대 등 바람에 날아갈 수 있는 물건은
+즉시 실내로 들여놓아 주세요!
+
+주차장 침수가 우려되오니,
+지하 주차 차량은 가능한 지상으로 이동해 주시기 바랍니다!
+
+비상 연락처는 관리사무소 02-1234-5678 입니다!<button class="copy-btn" onclick="cp(this,'p7')">복사</button></div>
+
+<h3>실습 8: 엘리베이터 음성 안내 <span class="badge badge--bl">Stability 70%</span></h3>
+<div class="prompt" id="p8">이 엘리베이터의 최대 정원은 13명이며,
+최대 적재 하중은 1,000킬로그램입니다.
+
+안전을 위해 정원을 초과하여 탑승하지 마시고,
+비상 시에는 인터폰 버튼을 눌러 주시기 바랍니다.
+
+반려동물은 반드시 목줄을 착용하거나
+안아서 탑승해 주시기 바랍니다.
+감사합니다.<button class="copy-btn" onclick="cp(this,'p8')">복사</button></div>
+
+<h3>실습 9: 명절 인사방송 <span class="badge badge--mt">Stability 30%</span></h3>
+<div class="prompt" id="p9">사랑하는 입주민 여러분~
+따뜻한 설 명절 인사를 드립니다.
+
+올 한 해도 우리 아파트 주민 여러분의
+따뜻한 배려와 협조 덕분에,
+행복한 단지를 만들어갈 수 있었습니다.
+
+새해에는 가족 모두 건강하시고,
+하시는 일마다 좋은 결실 맺으시길
+진심으로 기원합니다~
+
+풍성하고 따뜻한 명절 보내세요~
+○○아파트 관리사무소 직원 일동.<button class="copy-btn" onclick="cp(this,'p9')">복사</button></div>
+
+<h3>실습 10: 분리수거 안내방송</h3>
+<div class="prompt" id="p10">안녕하세요. 입주민 여러분.
+○○아파트 관리사무소입니다.
+
+매주 수요일과 토요일은 재활용 분리수거 날입니다.
+
+종이류, 플라스틱, 캔, 유리는 각각 분리하여
+1층 분리수거장의 지정된 수거함에 배출해 주시기 바랍니다.
+
+음식물 쓰레기는 물기를 최대한 제거한 후
+전용 봉투에 담아 배출해 주세요.
+
+대형 폐기물은 반드시 구청 홈페이지에서
+스티커를 구매하신 후 부착하여 배출하시기 바랍니다.
+
+협조 부탁드립니다. 감사합니다.<button class="copy-btn" onclick="cp(this,'p10')">복사</button></div>
+
+<!-- ====== 클로바노트 ====== -->
+<h2>📝 파트 3: 클로바노트 — 회의록 자동화</h2>
+
+<h3>실습 11: 기본 녹음 → 텍스트 변환</h3>
+<p>클로바노트 앱 → 새 노트 → 녹음 시작 → 아래를 <strong>소리내어 읽기</strong></p>
+<div class="prompt" id="p11">오늘 입주자대표회의 안건은 세 가지입니다.
+첫째, 봄맞이 단지 내 조경 정비 건입니다.
+103동 뒤편 벚나무 세 그루의 가지치기와
+중앙 화단 봄꽃 식재를 논의하겠습니다.
+둘째, 지하 주차장 LED 교체 공사 일정 건입니다.
+현재 B1, B2 주차장 형광등 중 38개가 수명이 다 되어
+LED로 전면 교체할 예정입니다.
+셋째, 3월 관리비 정산 내역 보고 건입니다.<button class="copy-btn" onclick="cp(this,'p11')">복사</button></div>
+
+<h3>실습 12: 일상 대화 녹음 테스트</h3>
+<p>자연스럽게 말하듯이 읽어보세요:</p>
+<div class="prompt" id="p12">아 그래서 어제 103동 김 소장님한테 전화가 왔는데요,
+지하 주차장 3번 구역에 물이 새고 있다고 하더라고요.
+그래서 제가 바로 업체한테 연락해서 내일 점검 잡았어요.
+비용은 아마 한 삼십만원 정도 나올 것 같은데,
+일단 견적 받아보고 대표회의에서 결정하자고 했어요.<button class="copy-btn" onclick="cp(this,'p12')">복사</button></div>
+<div class="card card--tip"><p>💡 일상 대화체도 놀라울 만큼 정확하게 인식합니다!</p></div>
+
+<h3>실습 13: 현장 점검 음성 메모</h3>
+<div class="prompt" id="p13">오늘 3월 19일, 단지 내 시설 점검 보고입니다.
+101동 5층 복도 형광등 2개가 나가서 교체 필요합니다.
+102동 지하 2층 주차장 배수구에 이물질이 끼어서 배수가 안 됩니다.
+놀이터 그네 한 대가 볼트가 풀려 있어서 어린이 사고 위험.
+중앙 화단 스프링클러 2번 구역이 작동하지 않습니다.
+이상 4건 조치 필요합니다.<button class="copy-btn" onclick="cp(this,'p13')">복사</button></div>
+
+<h3>실습 14: 기존 녹음 파일 업로드</h3>
+<div class="card">
+<p><strong>1.</strong> 클로바노트 → "새 노트" → <strong>"파일 업로드"</strong> 선택</p>
+<p><strong>2.</strong> 스마트폰에 있는 녹음 파일 선택</p>
+<p><strong>3.</strong> 텍스트 변환 결과 확인!</p>
+<p style="margin-top:8px">💡 민원 통화 녹음을 업로드하면 텍스트 근거 확보 가능!</p>
+</div>
+
+<h3>실습 15: 클로바노트 + ChatGPT = 회의록 자동화</h3>
+<div class="step-flow">
+<div class="step-item" style="border-color:var(--mt)"><strong>1</strong><br>클로바노트<br>녹음→텍스트</div>
+<div class="step-arrow">→</div>
+<div class="step-item" style="border-color:var(--or)"><strong>2</strong><br>텍스트<br>전체 복사</div>
+<div class="step-arrow">→</div>
+<div class="step-item"><strong>3</strong><br>ChatGPT에<br>프롬프트+텍스트</div>
+<div class="step-arrow">→</div>
+<div class="step-item" style="border-color:var(--rd)"><strong>✓</strong><br>5분 만에<br>회의록 완성!</div>
+</div>
+<div class="prompt" id="p15">아래 내용은 아파트 입주자대표회의를 녹음한 후
+AI가 자동으로 텍스트로 변환한 것입니다.
+
+이 내용을 바탕으로 정식 회의록 형태로 정리해줘.
+
+회의록 형식:
+- 회의 일시: 오늘 날짜로
+- 참석자: 내용에서 추출 (없으면 "관리소장 외 N명")
+- 안건별로 번호를 매겨서 정리
+- 각 안건에 대한 논의 내용과 결정 사항을 구분해서 쓰기
+- 마지막에 다음 회의 일정 또는 후속 조치 사항 정리
+- 문어체로 공식적인 톤으로 작성해줘
+
+변환된 텍스트:
+(여기에 클로바노트 결과를 붙여넣기)<button class="copy-btn" onclick="cp(this,'p15')">복사</button></div>
+
+<!-- 사이트 목록 -->
+<h2>🌐 오늘 사용한 사이트</h2>
+<table>
+<tr><th>도구</th><th>사이트</th><th>계정</th><th>무료 한도</th></tr>
+<tr><td>🎵 SUNO AI</td><td><a href="https://suno.com" target="_blank">suno.com</a></td><td>구글</td><td>하루 10곡</td></tr>
+<tr><td>🎙️ 일레븐랩스</td><td><a href="https://elevenlabs.io" target="_blank">elevenlabs.io</a></td><td>구글</td><td>월 10,000자</td></tr>
+<tr><td>📝 클로바노트</td><td><a href="https://clovanote.naver.com" target="_blank">clovanote.naver.com</a></td><td>네이버</td><td>월 300분</td></tr>
+<tr><td>🔍 Gemini</td><td><a href="https://gemini.google.com" target="_blank">gemini.google.com</a></td><td>구글</td><td>무료</td></tr>
+<tr><td>💬 ChatGPT</td><td><a href="https://chatgpt.com" target="_blank">chatgpt.com</a></td><td>구글</td><td>무료</td></tr>
+</table>
+
+<!-- CTA -->
+<div class="cta-box">
+<p style="font-size:1.1rem;font-weight:700;margin-bottom:8px">📱 계속 함께해요!</p>
+<p><a href="https://open.kakao.com/o/gB2DbrSh" target="_blank">💬 카카오톡 단톡방</a> — 프롬프트 & 자료 계속 공유!</p>
+<p style="margin-top:12px"><a href="https://www.youtube.com/@aiebrain" target="_blank">🔴 유튜브: AI 커머스 브레인</a></p>
+<p style="color:#9BA5B5;font-size:.9rem;margin-top:4px">AI로 매출 올리는 실전 노하우 — 구독하면 가장 빠르게!</p>
+</div>
+
+<div class="footer">
+<p>교육 자료: 이만성 (이브레인) | AI 커머스 / 디지털 마케팅 전문가</p>
+<p>© 2026 이브레인</p>
+</div>
+
+</div>
+
+<script>
+function cp(btn,id){
+  const el=document.getElementById(id);
+  const text=el.innerText.replace('복사','').replace('복사됨!','').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='복사됨!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='복사';btn.classList.remove('copied')},2000);
+  });
+}
+</script>
+</body>
+</html>
