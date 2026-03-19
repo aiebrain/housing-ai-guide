@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -12,7 +12,12 @@
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--tx);line-height:1.7}
 .wrap{max-width:800px;margin:0 auto;padding:20px}
 h1{font-size:1.8rem;font-weight:900;color:#FFF;margin:24px 0 8px;letter-spacing:-0.02em}
-h2{font-size:1.4rem;font-weight:700;color:#FFF;margin:32px 0 12px;padding-bottom:8px;border-bottom:3px solid var(--or)}
+h2{font-size:1.4rem;font-weight:700;margin:32px 0 12px;padding-bottom:8px}
+h2.suno{color:var(--or);border-bottom:3px solid var(--or)}
+h2.eleven{color:var(--bl);border-bottom:3px solid var(--bl)}
+h2.clova{color:var(--mt);border-bottom:3px solid var(--mt)}
+h2.setup{color:#FFF;border-bottom:3px solid #FFF}
+h2.site{color:var(--mt);border-bottom:3px solid var(--mt)}
 h3{font-size:1.15rem;font-weight:700;color:#E0E4EA;margin:24px 0 8px}
 h4{font-size:1rem;font-weight:700;color:#E0E4EA;margin:16px 0 6px}
 p{margin:6px 0;font-size:.95rem}
@@ -65,7 +70,7 @@ tr:nth-child(even){background:rgba(255,255,255,0.03)}
 </div>
 
 <!-- 앱 설치 -->
-<h2>📲 앱 설치 (실습 전 준비)</h2>
+<h2 class="setup">📲 앱 설치 (실습 전 준비)</h2>
 
 <table>
 <tr><th>도구</th><th>다운로드</th><th>로그인</th></tr>
@@ -79,7 +84,7 @@ tr:nth-child(even){background:rgba(255,255,255,0.03)}
 <div class="card card--warn"><p>⚠️ <strong>구글 계정</strong>이 없으면 미리 만들어주세요! 클로바노트는 <strong>네이버 계정</strong>이 필요합니다.</p></div>
 
 <!-- ====== SUNO ====== -->
-<h2>🎵 파트 1: SUNO AI — 음악 만들기</h2>
+<h2 class="suno">🎵 파트 1: SUNO AI — 음악 만들기</h2>
 
 <div class="card card--tip"><p>🔑 <strong>GMIV 프롬프트 법칙</strong>: [장르] + [분위기] + [악기] + [보컬] = 완벽한 프롬프트!</p></div>
 
@@ -190,7 +195,7 @@ tr:nth-child(even){background:rgba(255,255,255,0.03)}
 </details>
 
 <!-- ====== 일레븐랩스 ====== -->
-<h2>🎙️ 파트 2: 일레븐랩스 — AI 성우</h2>
+<h2 class="eleven">🎙️ 파트 2: 일레븐랩스 — AI 성우</h2>
 
 <div class="card">
 <h4>🎛️ 톤 조절법</h4>
@@ -276,7 +281,7 @@ tr:nth-child(even){background:rgba(255,255,255,0.03)}
 협조 부탁드립니다. 감사합니다.<button class="copy-btn" onclick="cp(this,'p10')">복사</button></div>
 
 <!-- ====== 클로바노트 ====== -->
-<h2>📝 파트 3: 클로바노트 — 회의록 자동화</h2>
+<h2 class="clova">📝 파트 3: 클로바노트 — 회의록 자동화</h2>
 
 <h3>실습 11: 기본 녹음 → 텍스트 변환</h3>
 <p>클로바노트 앱 → 새 노트 → 녹음 시작 → 아래를 <strong>소리내어 읽기</strong></p>
@@ -341,7 +346,7 @@ AI가 자동으로 텍스트로 변환한 것입니다.
 (여기에 클로바노트 결과를 붙여넣기)<button class="copy-btn" onclick="cp(this,'p15')">복사</button></div>
 
 <!-- 사이트 목록 -->
-<h2>🌐 오늘 사용한 사이트</h2>
+<h2 class="site">🌐 오늘 사용한 사이트</h2>
 <table>
 <tr><th>도구</th><th>사이트</th><th>계정</th><th>무료 한도</th></tr>
 <tr><td>🎵 SUNO AI</td><td><a href="https://suno.com" target="_blank">suno.com</a></td><td>구글</td><td>하루 10곡</td></tr>
